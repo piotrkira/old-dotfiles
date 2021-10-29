@@ -1,5 +1,4 @@
 local map = vim.api.nvim_set_keymap
-vim.cmd("inoremap <silent><expr> <CR>      compe#confirm('<CR>')")
 vim.cmd('let g:tmux_navigator_no_mappings = 1')
 map('n', '<Space>', '<NOP>', {noremap = true, silent = true})
 vim.g.mapleader = ' '

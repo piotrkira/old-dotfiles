@@ -23,6 +23,7 @@ vim.wo.relativenumber = true
 vim.wo.signcolumn = 'yes'
 
 vim.cmd('set omnifunc=syntaxcomplete#Complete')
+vim.cmd('set encoding=UTF-8')
 vim.cmd('set smartcase')
 vim.cmd('set cursorline')
 -- vim.cmd('set nohlsearch')

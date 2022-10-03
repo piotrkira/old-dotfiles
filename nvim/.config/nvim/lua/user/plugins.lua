@@ -9,7 +9,6 @@ return require('packer').startup(function()
 	use { 'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' } },
 		config = [[require('user.config.telescope')]] }
 	use { 'nvim-telescope/telescope-ui-select.nvim' }
-	--	use 'unblevable/quick-scope'
 	use { 'windwp/nvim-autopairs', config = [[require('user.config.nvim-autopairs')]] }
 	use { 'norcalli/nvim-colorizer.lua', config = [[require('user.config.colorizer')]] }
 	use { 'hoob3rt/lualine.nvim', config = [[require('user.config.lualine')]] }
@@ -18,6 +17,9 @@ return require('packer').startup(function()
 
 	use { 'b3nj5m1n/kommentary' }
 	use { 'f-person/git-blame.nvim', config = [[require('user.config.git-blame')]] }
+
+	-- TODO: learn more about this plugin
+	use { 'ggandor/lightspeed.nvim' }
 
 	-- lsp --
 	use { 'neovim/nvim-lspconfig' }
@@ -42,5 +44,5 @@ return require('packer').startup(function()
 	use 'sainnhe/gruvbox-material'
 	use 'sainnhe/edge'
 	use 'rrethy/nvim-base16 ]]
-	use 'sainnhe/sonokai'
+	-- use 'sainnhe/sonokai'
 end)

@@ -1,6 +1,6 @@
+require('user.keybindings')
 require('user.plugins')
 require('user.settings')
-require('user.keybindings')
 
 local cmp = require 'cmp'
 local select_opts = { behavior = cmp.SelectBehavior.Select }

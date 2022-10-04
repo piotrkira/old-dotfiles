@@ -49,6 +49,7 @@ require 'lspconfig'.pyright.setup {
 require 'lspconfig'.gopls.setup { capabilities = capabilities }
 require 'lspconfig'.clangd.setup {}
 require 'lspconfig'.rls.setup {}
+require 'lspconfig'.tsserver.setup{}
 
 -- lua lsp
 require 'lspconfig'.sumneko_lua.setup {}

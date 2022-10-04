@@ -1,7 +1,8 @@
 local map = vim.api.nvim_set_keymap
-vim.cmd('let g:tmux_navigator_no_mappings = 1')
 map('n', '<Space>', '<NOP>', { noremap = true, silent = true })
 vim.g.mapleader = ' '
+
+-- lsp --
 map('n', '<leader>gd', '<cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })
 map('n', '<leader>gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', { noremap = true, silent = true })
 map('n', '<leader>gr', '<cmd>lua vim.lsp.buf.references()<CR>', { noremap = true, silent = true })
@@ -9,10 +10,15 @@ map('n', '<leader>gi', '<cmd>lua vim.lsp.buf.impementation()<CR>', { noremap = t
 map('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', { noremap = true, silent = true })
 map('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', { noremap = true, silent = true })
 map('n', '<leader>f', '<cmd>lua vim.lsp.buf.format()<CR>', { noremap = true, silent = true })
+map('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>', { noremap = true, silent = true })
 map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', { noremap = true, silent = true })
+
 map('n', '<leader>gb', '<cmd>:GitBlameToggle<CR>', { noremap = true, silent = true })
 map('n', '<leader>ogb', '<cmd>:GitBlameOpenCommitURL<CR>', { noremap = true, silent = true })
--- map('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', {noremap = true, silent = true})
+map('n', '<leader>ogb', '<cmd>:GitBlameOpenCommitURL<CR>', { noremap = true, silent = true })
+map('n', '<leader>ogl', '<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<cr>', {noremap = true, silent = true})
+map('v', '<leader>ogl', '<cmd>lua require"gitlinker".get_buf_range_url("v", {action_callback = require"gitlinker.actions".open_in_browser})<cr>', {})
+map('n', '<C-k>', '<cmd>lua .lsp.buf.signature_help()<CR>', {noremap = true, silent = true})
 map('n', '<C-p>', '<cmd>lua vim.diagnostic.goto_prev()<CR>', { noremap = true, silent = true })
 map('n', '<C-n>', '<cmd>lua vim.diagnostic.goto_next()<CR>', { noremap = true, silent = true })
 map('n', '<C-J>', '<cmd>:cnext<CR>', { noremap = true, silent = true })

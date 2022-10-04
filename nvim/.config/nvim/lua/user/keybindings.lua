@@ -1,5 +1,5 @@
--- vim.keymap.set('n', '<Space>', '<NOP>')
-vim.g.leader = ' '
+vim.keymap.set('n', '<Space>', '<NOP>')
+vim.g.mapleader = ' '
 
 -- lsp --
 vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition)
@@ -14,14 +14,13 @@ vim.keymap.set('n', 'K', vim.lsp.buf.hover)
 
 vim.keymap.set('n', '<leader>gb', '<cmd>:GitBlameToggle')
 vim.keymap.set('n', '<leader>ogb', '<cmd>:GitBlameOpenCommitURL')
-vim.keymap.set('n', '<leader>ogb', '<cmd>:GitBlameOpenCommitURL')
-vim.keymap.set('n', '<leader>ogl', require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser}))
-vim.keymap.set('v', '<leader>ogl', require"gitlinker".get_buf_range_url("v", {action_callback = require"gitlinker.actions".open_in_browser}))
+vim.keymap.set('n', '<leader>ogl', function() require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser}) end)
+vim.keymap.set('v', '<leader>ogl', function() require"gitlinker".get_buf_range_url("v", {action_callback = require"gitlinker.actions".open_in_browser}) end)
 vim.keymap.set('n', '<leader>sh', vim.lsp.buf.signature_help)
 vim.keymap.set('n', '<C-p>', vim.diagnostic.goto_prev)
 vim.keymap.set('n', '<C-n>', vim.diagnostic.goto_next)
-vim.keymap.set('n', '<C-J>', '<cmd>:cnext')
-vim.keymap.set('n', '<C-K>', '<cmd>:cprev')
+vim.keymap.set('n', '<C-J>', '<cmd>:cnext<cr>')
+vim.keymap.set('n', '<C-K>', '<cmd>:cprev<cr>')
 -- vim.keymap.set('n', '<C-n>', ''<cmd>:NvimTreeToggle)'
 vim.keymap.set('v', '<', '<gv')
 vim.keymap.set('v', '>', '>gv')
@@ -32,3 +31,5 @@ vim.keymap.set('n', 'Y', 'y$')
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<C-f>', builtin.find_files)
 vim.keymap.set('n', '<C-g>', builtin.live_grep)
+vim.keymap.set('n', '<leader>fw', builtin.grep_string)
+vim.keymap.set('n', '<leader>fq', builtin.quickfix)

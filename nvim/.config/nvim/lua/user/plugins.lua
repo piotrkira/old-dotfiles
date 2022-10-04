@@ -36,7 +36,6 @@ return require('packer').startup(function()
 	use { 'L3MON4D3/LuaSnip' }
   use { 'ray-x/lsp_signature.nvim', config = [[require('user.config.lsp_signature')]] }
 
-	use { 'romainl/vim-cool' }
   -- git --
 	use { 'lewis6991/gitsigns.nvim', config = [[require('user.config.gitsigns')]] }
 	use { 'ruifm/gitlinker.nvim' }

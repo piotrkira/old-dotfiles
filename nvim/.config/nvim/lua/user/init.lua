@@ -65,5 +65,3 @@ require 'lspconfig'.sumneko_lua.setup {
 -- vim.o.completeopt = 'menuone,noselect'
 vim.cmd("highlight QuickScopePrimary gui=bold guibg='#504945' guifg='#bdae93'")
 vim.cmd("highlight QuickScopeSecondary guibg='#504945' guifg='#bdae93'")
-
-vim.cmd('let g:sneak#label = 1')

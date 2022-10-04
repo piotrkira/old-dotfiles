@@ -39,6 +39,7 @@ return require('packer').startup(function()
   -- git --
 	use { 'lewis6991/gitsigns.nvim', config = [[require('user.config.gitsigns')]] }
 	use { 'ruifm/gitlinker.nvim' }
+  use { 'sindrets/diffview.nvim' }
 
 	use { 'ntpeters/vim-better-whitespace' }
 

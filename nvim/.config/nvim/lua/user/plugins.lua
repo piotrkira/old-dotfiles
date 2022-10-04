@@ -34,6 +34,7 @@ return require('packer').startup(function()
 	use { 'onsails/lspkind-nvim' }
 	use { 'hrsh7th/cmp-vsnip' }
 	use { 'L3MON4D3/LuaSnip' }
+  use { 'ray-x/lsp_signature.nvim', config = [[require('user.config.lsp_signature')]] }
 
 	use { 'romainl/vim-cool' }
   -- git --

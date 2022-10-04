@@ -1,4 +1,4 @@
-vim.opt.termguicolors = true
+vim.o.termguicolors = true
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.o.clipboard = 'unnamedplus'

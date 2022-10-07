@@ -41,13 +41,35 @@ cmp.setup({
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-require 'lspconfig'.pyright.setup {
-  settings = {
-    python = {
-      path = '/usr/bin/python'
-    }
-  }
-}
+local configs = require('lspconfig/configs')
+local util = require('lspconfig/util')
+
+local path = util.path
+
+local function get_python_path(workspace)
+  -- Use activated virtualenv.
+  if vim.env.VIRTUAL_ENV then
+    return path.join(vim.env.VIRTUAL_ENV, 'bin', 'python')
+  end
+
+  -- Find and use virtualenv in workspace directory.
+  for _, pattern in ipairs({'*', '.*'}) do
+    local match = vim.fn.glob(path.join(workspace, pattern, 'pyvenv.cfg'))
+    if match ~= '' then
+      return path.join(path.dirname(match), 'bin', 'python')
+    end
+  end
+
+  -- Fallback to system Python.
+  return exepath('python3') or exepath('python') or 'python'
+end
+
+require 'lspconfig'.pyright.setup({
+  before_init = function(_, config)
+    config.settings.python.pythonPath = get_python_path(config.root_dir)
+  end
+})
+
 require 'lspconfig'.gopls.setup { capabilities = capabilities }
 require 'lspconfig'.clangd.setup {}
 require 'lspconfig'.rls.setup {}
@@ -60,8 +82,9 @@ require 'lspconfig'.sumneko_lua.setup {
   },
 }
 
--- vim.cmd [[autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()]]
--- vim.cmd [[autocmd CursorHoldI * silent! lua vim.lsp.buf.signature_help()]]
+--[[ vim.cmd [[autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()]]
+-- vim.cmd [[autocmd CursorHoldI * silent! lua vim.lsp.buf.signature_help()]] ]]
 -- vim.o.completeopt = 'menuone,noselect'
+--vim.api.nvim_create_autocmd("CursorHold", { command = "silent! lua vim.diagnostic.open_float()"})
 vim.cmd("highlight QuickScopePrimary gui=bold guibg='#504945' guifg='#bdae93'")
 vim.cmd("highlight QuickScopeSecondary guibg='#504945' guifg='#bdae93'")

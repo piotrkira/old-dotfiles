@@ -1,4 +1,7 @@
 require("telescope").setup {
+  defaults = {
+    file_ignore_patterns = {"node_modules", "lib"}
+  },
 	extensions = {
 		["ui-select"] = {
 			require("telescope.themes").get_dropdown {

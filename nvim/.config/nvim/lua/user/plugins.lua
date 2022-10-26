@@ -3,8 +3,11 @@ return require('packer').startup(function()
 
   -- treesitter --
 	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = [[require('user.config.nvim-treesitter')]] }
+  use { 'nvim-treesitter/nvim-treesitter-textobjects'}
 	use { 'p00f/nvim-ts-rainbow' }
 	use { 'romgrk/nvim-treesitter-context' }
+
+ -- use { 'nvim-tree/nvim-tree.lua' , config = [[require('user.config.nvim-tree')]]}
 
 	use { 'kyazdani42/nvim-web-devicons', config = [[require('user.config.nvim-web-devicons')]] }
 	--  use { 'kyazdani42/nvim-tree.lua' }
@@ -21,7 +24,9 @@ return require('packer').startup(function()
 	use { 'f-person/git-blame.nvim', config = [[require('user.config.git-blame')]] }
 
 	-- utils --
-	use { 'ggandor/lightspeed.nvim' }
+	-- use { 'ggandor/lightspeed.nvim' }
+	use { 'ggandor/leap.nvim', config = [[require('user.config.leap')]] }
+  use { 'kylechui/nvim-surround', config= [[require('user.config.nvim-surround')]]}
 
 	-- lsp --
 	use { 'neovim/nvim-lspconfig' }

@@ -41,6 +41,12 @@ vim.opt.shortmess:append("c")
 vim.cmd('set shortmess-=F') ]]
 --vim.cmd('let g:edge_transparent_background = 0')
 --vim.cmd('let g:edge_style="aura"')
-vim.cmd('let g:everforest_background="hard"')
-vim.cmd('let g:everforest_transparent_background=1')
+vim.g.everforest_background="hard"
+vim.g.everforest_transparent_background=1
+--[[ vim.cmd('let g:everforest_background="hard"')
+vim.cmd('let g:everforest_transparent_background=1') ]]
 vim.cmd('colorscheme everforest')
+
+-- for nvim-tree plugin
+-- vim.g.loaded_netrw = 1
+-- vim.g.loaded_netrwPlugin = 1

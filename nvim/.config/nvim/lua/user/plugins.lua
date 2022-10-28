@@ -26,10 +26,17 @@ return require('packer').startup(function()
 	-- utils --
 	-- use { 'ggandor/lightspeed.nvim' }
 	use { 'ggandor/leap.nvim', config = [[require('user.config.leap')]] }
-  use { 'kylechui/nvim-surround', config= [[require('user.config.nvim-surround')]]}
+  use { 'kylechui/nvim-surround', config= [[require('user.config.nvim-surround')]] }
 
   use { 'nvim-neotest/neotest', config = [[require('user.config.neotest')]] }
   use { 'nvim-neotest/neotest-python' }
+
+  use { 'williamboman/mason.nvim' , config = [[require('user.config.mason')]] }
+
+  -- debuging --
+  use { 'mfussenegger/nvim-dap' }
+  use { 'rcarriga/nvim-dap-ui' , config = [[require('user.config.nvim-dap-ui')]] }
+  use { 'mfussenegger/nvim-dap-python' , config = [[require('user.config.nvim-dap')]]}
 
 	-- lsp --
 	use { 'neovim/nvim-lspconfig' }
@@ -43,6 +50,10 @@ return require('packer').startup(function()
 	use { 'hrsh7th/cmp-vsnip' }
 	use { 'L3MON4D3/LuaSnip' }
   use { 'ray-x/lsp_signature.nvim', config = [[require('user.config.lsp_signature')]] }
+
+  use { 'jose-elias-alvarez/null-ls.nvim' , config = [[require('user.config.null-ls')]] }
+
+  use { 'ThePrimeagen/refactoring.nvim' , config = [[require('user.config.refectoring')]]}
 
   -- git --
 	use { 'lewis6991/gitsigns.nvim', config = [[require('user.config.gitsigns')]] }

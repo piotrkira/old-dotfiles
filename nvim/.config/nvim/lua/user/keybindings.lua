@@ -12,6 +12,24 @@ vim.keymap.set('n', '<leader>fc', vim.lsp.buf.format)
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
 vim.keymap.set('n', 'K', vim.lsp.buf.hover)
 
+vim.keymap.set('n', '<leader>rt', function() require('neotest').run.run() end)
+vim.keymap.set('n', '<leader>rat', function() require('neotest').run.run(vim.fn.expand("%")) end)
+vim.keymap.set('n', '<leader>dt', function() require('neotest').run.run({strategy = "dap"}) end)
+
+vim.keymap.set('n', '<leader>dw', function() require'dapui'.toggle() end)
+vim.keymap.set('n', '<leader>v', function() require'dapui'.eval() end)
+vim.keymap.set('n', '<leader>db', function() require'dap'.toggle_breakpoint() end)
+vim.keymap.set('n', '<leader>dc', function() require'dap'.continue() end)
+vim.keymap.set('n', '<leader>so', function() require'dap'.step_over() end)
+vim.keymap.set('n', '<leader>si', function() require'dap'.step_into() end)
+vim.keymap.set('n', '<leader>dr', function() require'dap'.repl.open() end)
+
+vim.keymap.set('v', '<leader>re', function() require('refactoring').refactor('Extract Function') end)
+vim.keymap.set('v', '<leader>rf', function() require('refactoring').refactor('Extract Function To File') end)
+vim.keymap.set('v', '<leader>rv', function() require('refactoring').refactor('Extract Variable') end)
+vim.keymap.set('v', '<leader>ri', function() require('refactoring').refactor('Inline Variable') end)
+
+
 vim.keymap.set('n', '<leader>gb', '<cmd>:GitBlameToggle')
 vim.keymap.set('n', '<leader>ogb', '<cmd>:GitBlameOpenCommitURL')
 vim.keymap.set('n', '<leader>ogl', function() require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser}) end)

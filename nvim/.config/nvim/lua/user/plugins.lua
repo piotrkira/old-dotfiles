@@ -28,6 +28,9 @@ return require('packer').startup(function()
 	use { 'ggandor/leap.nvim', config = [[require('user.config.leap')]] }
   use { 'kylechui/nvim-surround', config= [[require('user.config.nvim-surround')]]}
 
+  use { 'nvim-neotest/neotest', config = [[require('user.config.neotest')]] }
+  use { 'nvim-neotest/neotest-python' }
+
 	-- lsp --
 	use { 'neovim/nvim-lspconfig' }
 	use { 'hrsh7th/nvim-cmp' }

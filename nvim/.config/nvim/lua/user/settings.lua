@@ -47,6 +47,13 @@ vim.g.everforest_transparent_background=1
 vim.cmd('let g:everforest_transparent_background=1') ]]
 vim.cmd('colorscheme everforest')
 
+vim.fn.sign_define('DapBreakpoint', {text='', texthl='Debug', linehl='', numhl=''})
+vim.fn.sign_define('DapBreakpointCondition', {text='', texthl='Debug', linehl='', numhl=''})
+vim.fn.sign_define('DapLogPoint', {text='', texthl='Debug', linehl='', numhl=''})
+vim.fn.sign_define('DapStopped', {text='', texthl='Debug', linehl='', numhl=''})
+
 -- for nvim-tree plugin
 -- vim.g.loaded_netrw = 1
 -- vim.g.loaded_netrwPlugin = 1
+
+vim.g.dap_virtual_text = true

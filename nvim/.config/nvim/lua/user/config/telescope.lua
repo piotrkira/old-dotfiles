@@ -1,6 +1,6 @@
 require("telescope").setup {
   defaults = {
-    file_ignore_patterns = {"node_modules", "lib"}
+    file_ignore_patterns = {"node_modules", "lib", "__pycache__"}
   },
 	extensions = {
 		["ui-select"] = {

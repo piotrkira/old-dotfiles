@@ -39,7 +39,7 @@ cmp.setup({
   preselect = false,
 })
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+-- local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local configs = require('lspconfig/configs')
 local util = require('lspconfig/util')
@@ -53,7 +53,7 @@ local function get_python_path(workspace)
   end
 
   -- Find and use virtualenv in workspace directory.
-  for _, pattern in ipairs({'*', '.*'}) do
+  for _, pattern in ipairs({ '*', '.*' }) do
     local match = vim.fn.glob(path.join(workspace, pattern, 'pyvenv.cfg'))
     if match ~= '' then
       return path.join(path.dirname(match), 'bin', 'python')
@@ -70,7 +70,7 @@ require 'lspconfig'.pyright.setup({
   end
 })
 
-require 'lspconfig'.gopls.setup { capabilities = capabilities }
+require 'lspconfig'.gopls.setup {}
 require 'lspconfig'.clangd.setup {}
 require 'lspconfig'.rls.setup {}
 require 'lspconfig'.tsserver.setup {}

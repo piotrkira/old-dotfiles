@@ -77,9 +77,16 @@ require 'lspconfig'.tsserver.setup {}
 
 -- lua lsp
 require 'lspconfig'.sumneko_lua.setup {
-  workspace = {
-    library = vim.api.nvim_get_runtime_file("", true),
-  },
+  settings = {
+    Lua = {
+      runtime = {
+        version = "LuaJIT"
+      },
+      workspace = {
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
+    }
+  }
 }
 
 --[[ vim.cmd [[autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()]]

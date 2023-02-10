@@ -95,3 +95,12 @@ require 'lspconfig'.sumneko_lua.setup {
 --vim.api.nvim_create_autocmd("CursorHold", { command = "silent! lua vim.diagnostic.open_float()"})
 vim.cmd("highlight QuickScopePrimary gui=bold guibg='#504945' guifg='#bdae93'")
 vim.cmd("highlight QuickScopeSecondary guibg='#504945' guifg='#bdae93'")
+
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  pattern = "*",
+  group = vim.api.nvim_create_augroup("auto_create_dir", { clear = true }),
+  callback = function(ctx)
+    local dir = vim.fn.fnamemodify(ctx.file, ":p:h")
+    vim.fn.mkdir(dir, "p")
+  end
+})

@@ -89,11 +89,3 @@ require 'lspconfig'.sumneko_lua.setup {
     }
   }
 }
-
---[[ vim.cmd [[autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()]]
--- vim.cmd [[autocmd CursorHoldI * silent! lua vim.lsp.buf.signature_help()]] ]]
--- vim.o.completeopt = 'menuone,noselect'
---vim.api.nvim_create_autocmd("CursorHold", { command = "silent! lua vim.diagnostic.open_float()"})
-vim.cmd("highlight QuickScopePrimary gui=bold guibg='#504945' guifg='#bdae93'")
-vim.cmd("highlight QuickScopeSecondary guibg='#504950' guifg='#bdae93'")
-

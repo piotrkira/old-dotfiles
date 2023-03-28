@@ -77,7 +77,7 @@ require 'lspconfig'.rls.setup {}
 require 'lspconfig'.tsserver.setup {}
 
 -- lua lsp
-require 'lspconfig'.sumneko_lua.setup {
+require 'lspconfig'.lua_ls.setup {
   settings = {
     Lua = {
       runtime = {
@@ -89,3 +89,9 @@ require 'lspconfig'.sumneko_lua.setup {
     }
   }
 }
+
+vim.diagnostic.config({
+  float = {
+    source = 'always',
+  }
+})

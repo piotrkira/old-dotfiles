@@ -7,10 +7,8 @@ return require('packer').startup(function()
   use { 'p00f/nvim-ts-rainbow' }
   use { 'romgrk/nvim-treesitter-context' }
 
-  -- use { 'nvim-tree/nvim-tree.lua' , config = [[require('user.config.nvim-tree')]]}
 
   use { 'kyazdani42/nvim-web-devicons', config = [[require('user.config.nvim-web-devicons')]] }
-  --  use { 'kyazdani42/nvim-tree.lua' }
   use { 'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' } },
     config = [[require('user.config.telescope')]] }
   use { 'nvim-telescope/telescope-ui-select.nvim' }
@@ -24,17 +22,20 @@ return require('packer').startup(function()
   -- look --
   use { 'ntpeters/vim-better-whitespace' }
   use { 'norcalli/nvim-colorizer.lua', config = [[require('user.config.colorizer')]] }
-
   use { 'hoob3rt/lualine.nvim', config = [[require('user.config.lualine')]] }
-
   use { 'simrat39/symbols-outline.nvim', config = [[require('user.config.symbols-outline')]] }
 
   use { 'b3nj5m1n/kommentary' }
 
   -- utils --
-  -- use { 'ggandor/lightspeed.nvim' }
   use { 'kylechui/nvim-surround', config = [[require('user.config.nvim-surround')]] }
-
+  use {
+    "nvim-telescope/telescope-frecency.nvim",
+    config = function()
+      require"telescope".load_extension("frecency")
+    end,
+    requires = {"kkharji/sqlite.lua"}
+  }
   use { 'nvim-neotest/neotest', config = [[require('user.config.neotest')]] }
   use { 'nvim-neotest/neotest-python' }
 

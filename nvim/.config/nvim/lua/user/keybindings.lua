@@ -12,6 +12,9 @@ vim.keymap.set('n', '<leader>fc', vim.lsp.buf.format)
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
 vim.keymap.set('n', 'K', vim.lsp.buf.hover)
 
+vim.keymap.set('n', '<leader>so', '<cmd>:SymbolsOutline<CR>')
+vim.keymap.set('n', '<leader>ph', '<cmd>:Gitsigns preview_hunk_inline<CR>')
+
 vim.keymap.set('n', '<leader>rt', function() require('neotest').run.run() end)
 vim.keymap.set('n', '<leader>rat', function() require('neotest').run.run(vim.fn.expand("%")) end)
 vim.keymap.set('n', '<leader>dt', function() require('neotest').run.run({strategy = "dap"}) end)
@@ -40,7 +43,6 @@ vim.keymap.set('v', '<leader>ri', function() require('refactoring').refactor('In
 
 vim.keymap.set('n', '<leader>mm', function() require('harpoon.mark').add_file() end)
 vim.keymap.set('n', '<leader>mw', function() require('harpoon.ui').toggle_quick_menu() end)
-
 vim.keymap.set('n', '<leader>ma', function() require('harpoon.ui').nav_file(1) end)
 vim.keymap.set('n', '<leader>ms', function() require('harpoon.ui').nav_file(2) end)
 vim.keymap.set('n', '<leader>md', function() require('harpoon.ui').nav_file(3) end)

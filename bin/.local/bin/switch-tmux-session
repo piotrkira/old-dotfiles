@@ -1,0 +1,15 @@
+#!/bin/sh
+
+session_name=$(fd . ~/.local/share/tmux-sessions | xargs basename | cut -f1 -d"." | fzf-tmux -p)
+
+if [[ -z $session_name ]]; then
+    exit 0
+fi
+
+current_session=$(tmux display-message -p "#S")
+
+
+if [[ -n $TMUX ]] && [ $current_session = $session_name ]; then
+    exit 0
+fi
+tmuxp load -y "~/.local/share/tmux-sessions/${session_name}.yaml"

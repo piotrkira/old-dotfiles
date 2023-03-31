@@ -1,15 +1,38 @@
-#!/bin/sh
+#!/bin/bash
 
-session_name=$(fd . ~/.local/share/tmux-sessions | xargs basename | cut -f1 -d"." | fzf-tmux -p)
+tmux_running=$(pgrep tmux)
+if [[ -z $tmux_running ]]; then
+  tmux_sessions=$(tmux ls | cut -f1 -d":" | xargs -n 1 basename)
+fi
+tmuxp_sessions=$(fdfind . ~/.local/share/tmux-sessions | xargs -n 1 basename | cut -f1 -d".")
+projects=$(fdfind -d 1 --type d . ~/dev | xargs -n 1 basename)
+all=$(echo "${tmux_sessions} ${projects} ${tmuxp_sessions}" | tr " " "\n" | tr "." "_" | sort | uniq)
+session_name=$(echo "$all" | fzf-tmux -p)
 
 if [[ -z $session_name ]]; then
     exit 0
 fi
 
-current_session=$(tmux display-message -p "#S")
-
-
-if [[ -n $TMUX ]] && [ $current_session = $session_name ]; then
+# Skip if session is already attached
+if [[ -n $TMUX ]]; then
+  current_session=$(tmux display-message -p "#S")
+  if [ $current_session = $session_name ]; then
     exit 0
+  fi
 fi
-tmuxp load -y "~/.local/share/tmux-sessions/${session_name}.yaml"
+
+# Switch to tmux session if is already created
+if ! tmux has-session -t=$session_name 2> /dev/null; then
+  tmuxp_session_path="${HOME}/.local/share/tmux-sessions/${session_name}.yaml"
+  if test -f "$tmuxp_session_path"; then
+    tmuxp load -d -y "$tmuxp_session_path" > /dev/null
+  else
+    tmux new-session -s "$session_name" -c "${HOME}/dev/${session_name}" -d
+  fi
+fi
+
+if [[ -n $TMUX ]]; then
+  tmux switch -t "$session_name"
+else
+  tmux attach -t "$session_name"
+fi

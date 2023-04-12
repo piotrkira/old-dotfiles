@@ -4,5 +4,6 @@
         "vim",
         "use",
         "gitblame_message_template"
-    ]
+    ],
+    "workspace.checkThirdParty": false
 }

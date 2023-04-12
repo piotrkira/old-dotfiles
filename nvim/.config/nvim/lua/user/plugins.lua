@@ -4,7 +4,7 @@ return require('packer').startup(function()
   -- treesitter --
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = [[require('user.config.nvim-treesitter')]] }
   use { 'nvim-treesitter/nvim-treesitter-textobjects' }
-  use { 'p00f/nvim-ts-rainbow' }
+  -- use { 'HiPhish/nvim-ts-rainbow2' }
   use { 'romgrk/nvim-treesitter-context' }
 
 
@@ -40,12 +40,23 @@ return require('packer').startup(function()
   use { 'nvim-neotest/neotest-python' }
 
   use { 'williamboman/mason.nvim', config = [[require('user.config.mason')]] }
+  use { 'williamboman/mason-lspconfig.nvim'}
+  use {
+  'VonHeikemen/lsp-zero.nvim',
+  branch = 'v2.x',
+  requires = {
+    {'neovim/nvim-lspconfig'},
+    {'hrsh7th/nvim-cmp'},
+    {'hrsh7th/cmp-nvim-lsp'},
+    {'L3MON4D3/LuaSnip'},
+  }
+}
 
   -- debuging --
   use { 'mfussenegger/nvim-dap' }
-  use { 'rcarriga/nvim-dap-ui', config = [[require('user.config.nvim-dap-ui')]] }
+  use { 'rcarriga/nvim-dap-ui', config = [[require('user.config.nvim-dap')]] }
   use { 'mfussenegger/nvim-dap-python', config = [[require('user.config.nvim-dap')]] }
-  use { 'theHamsta/nvim-dap-virtual-text', config = [[require('user.config.nvim-dap-virtual-text')]] }
+  use { 'theHamsta/nvim-dap-virtual-text', config = [[require('user.config.nvim-dap')]] }
   use { 'leoluz/nvim-dap-go', config = [[require('user.config.nvim-dap')]] }
   use { 'hkupty/iron.nvim' }
 
@@ -61,6 +72,7 @@ return require('packer').startup(function()
   use { 'hrsh7th/cmp-vsnip' }
   use { 'L3MON4D3/LuaSnip' }
   use { 'ray-x/lsp_signature.nvim', config = [[require('user.config.lsp_signature')]] }
+  use { 'j-hui/fidget.nvim', config = [[require('user.config.ui')]] }
 
   use { 'jose-elias-alvarez/null-ls.nvim', config = [[require('user.config.null-ls')]] }
 
